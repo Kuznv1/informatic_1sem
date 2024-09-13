@@ -1,0 +1,25 @@
+#4
+f = open('input.txt', 'r')
+F = []
+for line in f:
+    F.append(f.split())
+A = F(0)
+for i in A:
+    A[i] = int(A[i])
+n = len(A)
+b = 0
+if F[n+1] == '+':
+    for k in A:
+        b += A[k]
+elif F[n+1] == '-':
+    b = A[0]
+    for k in range(1, n+1):
+        b -= A[k]
+if F[n+1] == '*':
+    b = 1
+    for k in A:
+        b *= A[k]
+f2 = open('output.txt', 'w')
+f2.write(b)
+f.close()
+f2.close()
