@@ -1,0 +1,28 @@
+A = [51.16, 55.67, 62.40, 67.00, 76.76, 83.76, 95.28, 112.59, 127.29, 247.82]
+U = [100, 110, 120, 130, 150, 165, 190, 220, 255, 500]
+u=0
+I = 0
+for i in range(len(A)):
+    I+= (A[i])**2
+sr_I = I/10
+
+for r in range(len(U)):
+    u+= (U[r])**2
+sr_u = u/10
+
+r_otn = sr_u/sr_I
+
+R = 4.9232
+del_sl = (1/10 * (r_otn - R**2))**(0.5)
+
+del_sist = R*((0.0025/460)**2 + (0.0005/92.68)**2)**0.5
+
+del_all = (del_sist**2 + del_sl**2)**0.5
+
+m=0
+for k in range(10):
+    m += A[k]*U[k]
+rr = m/(10*sr_I)
+print(r_otn, rr)
+print(sr_u, sr_I)
+print(del_sl, del_sist, del_all)

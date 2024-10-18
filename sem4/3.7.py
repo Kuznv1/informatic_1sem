@@ -9,13 +9,13 @@ b = np.array([[1.],
              [0]])
 D = np.linalg.det(a)
 print(D)
-
+####
 a1 = np.copy(a)
 for i in range(N):
     a1[i][0] = b[i][0]
 d1 = np.linalg.det(a1)
 
-print(d1, a1.shape)
+print(d1, a1.shape)####
 
 a2 = np.copy(a)
 for i in range(N):
@@ -43,5 +43,6 @@ c = np.dot(a, A)
 print(c)
 
 
-
+# np.mean(c) - усреднить
+# np.sum(c) - суммирование
 
