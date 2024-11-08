@@ -1,23 +1,62 @@
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
+"""St = 3
+Subject = int(input())
+str = input()
+N_tickets = [int(i) for i in list(str.split())]
 
-plt.figure(figsize=(8,5), dpi=100)
+First = []
+Second = []
+Third = 0
+One = 1
+N_one = sum(N_tickets)//3
 
-pos = 0
- 
-# параметр отвечающий за разброс
-scale = 10
- 
-# размер массива случайных чисел (сколько их сгенерируем)
-size = 10000
- 
-# используем функцию из подраздела random библиотеки numpy и передадим наши параметры
-values = np.random.normal(pos, 10, size)
- 
-# строим гистограмму с 100 блоков
-plt.hist(values, 100, color='green', label='trying')
 
-plt.legend()
+if sum(N_tickets) % 3 != 0:
+    print(0)
+else:
+    
+   '''
+   '''
 
-plt.show()
+First.append(max(N_tickets))
+N_tickets.remove(max(N_tickets))
+
+while Third == 0:
+    if sum(First) > sum(N_tickets):
+        print(0)
+        Third = 1
+    
+    if sum(First) * 2 < sum(N_tickets):
+        while sum(First) * 2 < sum(N_tickets):
+            First.append(min(N_tickets))
+            N_tickets.remove(min(N_tickets))
+
+    if sum(First) > sum(N_tickets):
+        print(0)
+        Third = 1
+    
+    if sum(First)*2 == sum(N_tickets):
+        Second.append(max(N_tickets))
+        N_tickets.remove(max(N_tickets))
+
+        if sum(Second) > sum(N_tickets):
+            print(0)
+            Third = 1
+
+        elif sum(Second) < sum(N_tickets):
+            while sum(Second) < sum(N_tickets):
+                Second.append(min(N_tickets))
+                N_tickets.remove(min(N_tickets))
+
+    if sum(Second) > sum(N_tickets):
+        print (0)
+        Third = 1
+    
+    Third = 1
+
+if sum(First) == sum(Second) and sum(First) == sum(N_tickets):
+    print(1)
+else:
+    print(0)"""
+N_point = 4
+Vectors = [[1 for j in range(3)] for i in range(N_point)]
+print(Vectors)
