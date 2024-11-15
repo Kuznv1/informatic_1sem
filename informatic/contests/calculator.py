@@ -27,4 +27,3 @@ for i in range(3, N+1):
     prices[1][i] = min(prices[1][i-1], p2 , p3) + 1
 
 print(prices[1][N])
-print(prices)

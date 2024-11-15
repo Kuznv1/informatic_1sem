@@ -1,62 +1,17 @@
-"""St = 3
-Subject = int(input())
-str = input()
-N_tickets = [int(i) for i in list(str.split())]
+A = [5,3,3,4,9,2]
+'''Skyscrapers = [5, 3, 3, 4, 9, 2, 7, 5, 2, 4, 5, 8, 9, 2, 3, 4, 6]
+a = len(A)
+'''
+i = 5
+'''
+I = [0, 1, 2, 3, 4]
+a = Skyscrapers[i]'''
+for j in range(i-1, -1, -1):
+    print(A[j])
 
-First = []
-Second = []
-Third = 0
-One = 1
-N_one = sum(N_tickets)//3
-
-
-if sum(N_tickets) % 3 != 0:
-    print(0)
-else:
-    
-   '''
-   '''
-
-First.append(max(N_tickets))
-N_tickets.remove(max(N_tickets))
-
-while Third == 0:
-    if sum(First) > sum(N_tickets):
-        print(0)
-        Third = 1
-    
-    if sum(First) * 2 < sum(N_tickets):
-        while sum(First) * 2 < sum(N_tickets):
-            First.append(min(N_tickets))
-            N_tickets.remove(min(N_tickets))
-
-    if sum(First) > sum(N_tickets):
-        print(0)
-        Third = 1
-    
-    if sum(First)*2 == sum(N_tickets):
-        Second.append(max(N_tickets))
-        N_tickets.remove(max(N_tickets))
-
-        if sum(Second) > sum(N_tickets):
-            print(0)
-            Third = 1
-
-        elif sum(Second) < sum(N_tickets):
-            while sum(Second) < sum(N_tickets):
-                Second.append(min(N_tickets))
-                N_tickets.remove(min(N_tickets))
-
-    if sum(Second) > sum(N_tickets):
-        print (0)
-        Third = 1
-    
-    Third = 1
-
-if sum(First) == sum(Second) and sum(First) == sum(N_tickets):
-    print(1)
-else:
-    print(0)"""
-N_point = 4
-Vectors = [[1 for j in range(3)] for i in range(N_point)]
-print(Vectors)
+'''if Skyscrapers[j] > a:
+        print(I)            
+        print( I[Skyscrapers[j]], end =' ')
+         
+        break
+    print(i, A[i])'''

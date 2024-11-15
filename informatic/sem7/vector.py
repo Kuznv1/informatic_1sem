@@ -38,12 +38,24 @@ class Vector():
         if isinstance(other, Vector):
             return (self.x * other.x + self.y * other.y + self.z * other.z)
         
-a = Vector(1, 2, 3)
+'''a = Vector(1, 2, 3)
 b = Vector(2, 4, 5)
 print(a)
 print(abs(a))
 print(a + b)
-#print(a + 1)
-#print(1 + a)
-#print(1 - b)
+print(a + 1)
+print(1 + a)
+print(1 - b)
 print(a * b)
+'''
+P1 = [1, 2, 3]
+P2 = [4, 5, 6]
+P3 = [4, 9, 2]
+x = 1
+y = 0
+z = 0
+P = [x, y, z]
+N_point = 3
+
+
+
