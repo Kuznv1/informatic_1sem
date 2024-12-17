@@ -10,30 +10,38 @@ class AVLTree:
         self.root = None
 
     def height(self, node):
-        if  node is None:
+        if  node == None:
             return 0
         return node.height
 
     def balance(self, node):
-        if node is None:
+        if node == None:
             return 0
-        else:
+        if self.height(node.left) != None and self.height(node.right) != None:
             return self.height(node.left) - self.height(node.right)
+        elif self.height(node.left) != None:
+            return  self.height(node.left)
+        elif self.height(node.right) != None:
+            return self.height(node.right) * (-1)
+        elif self.height(node.left) == None and self.height(node.right) == None:
+            return 0
     
     def add(self, root, value):
-        if root is None:
+        if root == None:
             return Node(value)
         elif value < root.value:
             root.left = self.add(root.left, value)
         else:
             root.right = self.add(root.right, value)
-        if self.height(root.left) is not None and self.height(root.right) is not None:
+        
+        if self.height(root.left) != None and self.height(root.right) != None:
             root.height = 1 + max(self.height(root.left), self.height(root.right))
-        elif self.height(root.left) is not None:
+        
+        elif self.height(root.left) != None:
             root.height = 1 + self.height(root.left)
-        elif self.height(root.right) is not None:
+        elif self.height(root.right) != None:
             root.height = 1 + self.height(root.right)
-        elif self.height(root.left) is None and self.height(root.right) is None:
+        elif self.height(root.left) == None and self.height(root.right) == None:
             root.height = 1
         balance = self.balance(root)
 
@@ -82,7 +90,7 @@ class AVLTree:
         return y
     
     def search(self, root, value):
-        if not root or root.value == value:
+        if root == None or root.value == value:
             return root
         if root.value < value:
             return self.search(root.right, value)
@@ -92,7 +100,10 @@ class AVLTree:
         self.root = self.add(self.root, value)
 
     def search_value(self, value):
-        return self.search(self.root, value)
+        if self.search(self.root, value) != None:
+            return True
+        else:
+            return None
     
 
 a = AVLTree()
@@ -100,4 +111,4 @@ a.add_value(3)
 a.add_value(8)
 a.add_value(2)
 a.add_value(7)
-print(a.search(7))
+print(a.search_value(5))
