@@ -5,7 +5,7 @@ import pandas as pd
 df = pd.read_csv('iris_data.csv')
 df
 
-fig = plt.figure(figsize = (16, 9))
+fig = plt.figure(figsize = (9, 5))
 ax1 = fig.add_subplot(311) 
 ax2 = fig.add_subplot(312) 
 
