@@ -37,25 +37,34 @@ class Vector():
     def __mul__(self, other):
         if isinstance(other, Vector):
             return (self.x * other.x + self.y * other.y + self.z * other.z)
+        else:
+            return (self.x * other, self.y * other, self.z * other)
         
-'''a = Vector(1, 2, 3)
+    def center_mass(self, other1, other2, other3, Masses):
+        self.x = (other1.x * Masses[0] + other2.x * Masses[1] + other3.x * Masses[2])/sum(Masses)
+        self.y = (other1.y * Masses[0] + other2.y * Masses[1] + other3.y * Masses[2])/sum(Masses)
+        self.z = (other1.z * Masses[0] + other2.z * Masses[1] + other3.z * Masses[2])/sum(Masses)
+        return self.x, self.y, self.z
+
+    
+
+a = Vector(1, 2, 3)
 b = Vector(2, 4, 5)
-print(a)
+'''print(a)
 print(abs(a))
 print(a + b)
-print(a + 1)
-print(1 + a)
-print(1 - b)
-print(a * b)
-'''
-P1 = [1, 2, 3]
-P2 = [4, 5, 6]
-P3 = [4, 9, 2]
-x = 1
-y = 0
-z = 0
-P = [x, y, z]
+#print(a + 1)
+#print(1 + a)
+#print(1 - b)
+print(a * b)'''
+
+P1 = Vector(1, 2, 3)
+P2 = Vector(4, 5, 6)
+P3 = Vector(0, 9, 2)
+
+Mc = Vector(0, 0, 0)
+M = [1, 2, 3]
+#P = [x, y, z]
 N_point = 3
-
-
-
+#print(a*2)
+print(Mc.center_mass(P1, P2, P3, M))

@@ -7,10 +7,41 @@ for sm in A:
     if sm in mirror:
         k += 1
 
-if A == A[::-1]:
+
+       
+if A != A[::-1]:
+    if k == len(A):
+        mirror_A = []
+        for sm in A:
+            mirror_A.append(mirror[sm])
+        mirror_A =''.join(map(str, A))  
+        if mirror_A == m:
+            print(m, 'is a mirrored string')
+        else:
+            print(m, 'is not a palindrom')
+    else:
+        print(m, 'is not a palindrom')
+    
+elif A == A[::-1]:
+    if k == len(A):
+        mirror_A = []
+        for sm in A:
+            mirror_A.append(mirror[sm])
+        mirror_A =''.join(map(str, A))  
+
+        #print('!', mirror_A, A)
+        if mirror_A == m:
+            print(m, 'is a mirrored palindrom')
+        else:
+            print(m, 'is a regular palindrom')
+    else:
         print(m, 'is regular palindrom')
-elif k < len(A):
-    print(m, 'is not a palindrom')
+
+
+
+
+
+         
     
 
 

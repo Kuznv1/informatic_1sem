@@ -1,15 +1,23 @@
-n = 120
-a = [10, 60, 100]
-k = len(a)
+def quick_sort1(nums):
+    if len(nums) <= 1:
+        return nums
+    pivot = nums[0]
+    left = [x for x in nums[1:] if x <= pivot]
+    right = [x for x in nums[1:] if x > pivot]
+    return quick_sort1(left) + [pivot] + quick_sort1(right)
 
-INF = 1e10; # Значение константы "бесконечность"
-F = [0] * (n + 1)
-F[0] = 0
+words = input().split()
 
-for m in range(1, n + 1): # заполняем массив A
-                       # m - сумма, которую нужно выдать
-    F[m] = INF         # помечаем, что сумму i выдать нельзя
-    for i in range(k): # перебираем все номиналы банкнот
-        if m >= a[i] and F[m - a[i]] + 1 < F[m]:
-            F[m] = F[m-a[i]]+1 # изменяем значение F[m],
-            print(F[m])
+groups = {}
+for word in words:
+    sorted_word = ''.join(quick_sort1(list(word)))
+    if sorted_word in groups:
+        groups[sorted_word].append(word)
+    else:
+        groups[sorted_word] = [word]
+
+# Сортировка групп: сначала по убыванию размера, потом по алфавиту
+sorted_groups = sorted(groups.values(), key=lambda x: (-len(x), quick_sort1(x)))
+
+for group in sorted_groups:
+    print(" ".join(quick_sort1(group)))

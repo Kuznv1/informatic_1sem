@@ -5,7 +5,7 @@ import pandas as pd
 df = pd.read_csv('iris_data.csv')
 df
 
-fig = plt.figure(figsize = (16,9))
+fig = plt.figure(figsize = (16, 9))
 ax1 = fig.add_subplot(311) 
 ax2 = fig.add_subplot(312) 
 
@@ -14,7 +14,7 @@ ax1.set_title('Species')
 
 zn1 = 0
 zn2 = 0
-
+zn3 = 0
 for x in list(df['Species']):
     if x == "Iris-setosa":
         zn1 += 1
@@ -22,7 +22,10 @@ for x in list(df['Species']):
     if x == 'Iris-versicolor':
         zn2 += 1
 
-ax1.pie([zn1, zn2], labels = ['Iris-setosa', 'Iris-versicolor'], colors = ['cornflowerblue', 'orchid'])
+    if x == 'Iris-virginica':
+        zn3 += 1
+
+ax1.pie([zn1, zn2, zn3], labels = ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'], colors = ['cornflowerblue', 'orchid', 'green'])
 
 #Lenght
 ax2.set_title('Lenght') 
