@@ -12,7 +12,8 @@ class Segment_Tree:
         k = 2**ceil((log(len(a), 2))) - len(a) # количество нулей в последней строчке
         # for i in range(k):
         #     self.array.append(0)
-        self.array = [0] * (len(a) + k - 1) + self.array  + [0] * k      
+        self.array = [0] * (len(a) + k - 1) + self.array  + [0] * k  
+        print(self.array)    
         for i in range(len(a) + k - 2, -1, -1):
             self.array[i] = self.array[2*i + 1] + self.array[2*i + 2]
         self.size = len(a)

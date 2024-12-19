@@ -33,7 +33,7 @@ class Tree:
         t = self.root
         while t != None and t.value != value:
             t = t.left if value < t.value else t.right
-        print('t a ', t.value if t.value == None else None)
+        #print('t a ', t.value if t.value == None else None)
         return False if t == None else True
     
     def remove(self, value):
@@ -82,15 +82,6 @@ class Tree:
             successor.parent.left = successor
             successor.left.parent = successor
             successor.right.parent = successor
-
-
-
-
-            
-
-
-
-
 
 T = Tree()
 T.add(7)

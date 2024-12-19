@@ -8,48 +8,54 @@ def conver_to(num, base):
         num //= base
     return result
 
-f = open('input.txt', 'r')
+f = open("C:\mipt\лабы\A.txt", 'r')
 F = []
-for line in f:
-    F.append(f.split())
-A = list(F[0])
-for i in A:
-    A[i] = int(A[i])
-zn = F[1]
-base = int(F[2])
+#f = open('input.txt', 'r')
 
-for i in A:
-    D = 0 
-    B = []
-    if i != 10:
-        while i >= 10:
-            B.append(i % 10)
-            i = i//10
-        B.append(i)
+for line in f:    
+    F += line.split() 
 
-        n = 0
-        for i in B:
-            D += B[i]*(base**n)
-            n += 1
+base = int(F.pop())
+zn = F.pop()
+for i in F:
+    i = int(i)
 
-        i = D
+print(F, zn, base)
+
+D = []
+if base != 10:
+    for t in range(len(F)):
+        A = []
+        r = 0
+        for i in F[t]:
+            A.append(int(i))   
+
+        n = len(A)-1
+        for i in A:
+            r += i*(base**n)
+            n -= 1
+        D.append(r)
+else:
+    for t in range(len(F)):
+        D.append(int(F[t]))
+
 
 b = 0
 
 if zn == '+':
-    for k in A:
-        b += A[k]
+    for k in D:
+        b += k
 elif zn == '-':
-    b = A[0]
+    b = D[0]
     for k in range(1, n+1):
-        b -= A[k]
+        b -= D[k]
 elif zn == '*':
     b = 1
-    for k in A:
-        b *= A[k]
+    for k in D:
+        b *= D
 
-f2 = open('output.txt', 'w')
-f2.write(conver_to(b, base))
+f2 = open("C:\mipt\лабы\B.txt", 'w')
+f2.write(str(conver_to(b, base)))
 f.close()
 f2.close()
 

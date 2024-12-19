@@ -1,20 +1,21 @@
-N, b, c = map(int, input().split())
+N, base, c = input().split()
+base = int(base)
+c = int(c)
 A = []
 k = 1
 
 D = 0
- 
-if b != 10:
-    while N >= 10:
-        A.append(N%10)
-        N = N//10
-        k += 1
-        A.append(N)
 
-    n = 0
+
+if base != 10:
+    for i in N:
+        A.append(int(i))
+    
+
+    n = len(A)-1
     for i in A:
-        D += A[i]*(b**n)
-        n += 1
+        D += i*(base**n)
+        n -= 1
 else:
     D = N
 
@@ -31,7 +32,7 @@ B.reverse()
 
 M = ''
 for r in B:
-    M = M + str(B[r])
+    M = M + str(r)
 
 
 print(M)
