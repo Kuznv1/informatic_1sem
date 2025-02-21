@@ -1,21 +1,20 @@
 #4
-f = open('C:\mipt\лабы\A.txt', 'r')
+f = open('input.txt', 'r')
 F = []
 for line in f:    
-    # if line != ' ' and line != '\n':
     F += line.split() 
     
 print(F)
 Zn = F.pop()
 A = []
-print(Zn, A)
+#print(Zn, A)
 for i in F:
     A.append(int(i))
     
 
 n = len(A)
 b = 0
-print(A)
+#print(A)
 if Zn == '+':
     for k in A:
         b += k
@@ -27,7 +26,7 @@ if Zn == '*':
     b = 1
     for k in A:
         b *= k
-f2 = open('C:\mipt\лабы\A.txt', 'w')
+f2 = open('output.txt', 'w')
 f2.write(str(b))
 f.close()
 f2.close()

@@ -1,5 +1,5 @@
 # Evclid
-'''a = 8
+a = 8
 b = 6
 while a != 0 and b != 0:
     if a > b:
@@ -10,7 +10,7 @@ while a != 0 and b != 0:
         print(f' a ={a}, b = {b}')
 
 print(a + b)
-'''
+
 # Решето Эратосфена
 '''Primes = [i for i in range(N + 1)]
 Primes[1] = 0 # т.к. 1 - не простое число
@@ -39,3 +39,4 @@ def Factor(n):
     if n > 1:
         Ans.append(n)
     return Ans
+print(Factor(10))

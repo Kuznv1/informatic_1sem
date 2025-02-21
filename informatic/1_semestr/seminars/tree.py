@@ -48,9 +48,9 @@ class Tree:
         
         if t.left == None and t.right == None:
             if t == parent.left :
-                parent.left == None
+                parent.left = None
             else:
-                parent.right == None
+                parent.right = None
             return
         
         if t.left == None or t.right == None:
@@ -67,7 +67,7 @@ class Tree:
             successor = successor.left
 
         if successor == t.right:
-            successor.left == t.left
+            successor.left = t.left
             successor.parent = t.parent
             successor.left.parent = successor
             successor.parent.left = successor
@@ -89,6 +89,6 @@ T.add(19)
 T.add(5)
 T.add(6)
 T.remove(6)
-print(T.search(6))
+print(T.search(9))
 
 

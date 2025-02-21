@@ -8,7 +8,7 @@ def conver_to(num, base):
         num //= base
     return result
 
-f = open("C:\mipt\лабы\A.txt", 'r')
+f = open("input.txt", 'r')
 F = []
 #f = open('input.txt', 'r')
 
@@ -20,7 +20,7 @@ zn = F.pop()
 for i in F:
     i = int(i)
 
-print(F, zn, base)
+#print(F, zn, base)
 
 D = []
 if base != 10:
@@ -54,7 +54,7 @@ elif zn == '*':
     for k in D:
         b *= D
 
-f2 = open("C:\mipt\лабы\B.txt", 'w')
+f2 = open("output.txt", 'w')
 f2.write(str(conver_to(b, base)))
 f.close()
 f2.close()

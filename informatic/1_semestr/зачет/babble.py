@@ -8,7 +8,7 @@ for m in range(L1):                                  #сортируем мас�
 
 print(A)
 
-'''def insertion_sort(nums):    #сортировка вставками
+def insertion_sort(nums):    #сортировка вставками
     # Сортировку начинаем со второго элемента, т.к. считается, что первый элемент уже отсортирован
     for i in range(1, len(nums)):
         item_to_insert = nums[i]
@@ -25,10 +25,10 @@ print(A)
 # Проверяем, что оно работает
 random_list_of_nums = [9, 1, 15, 28, 6]  
 insertion_sort(random_list_of_nums)  
-print(random_list_of_nums)'''
+print(random_list_of_nums)
 
 #сортировка выбором
-'''def selection_sort(nums):  
+def selection_sort(nums):  
     # Значение i соответствует кол-ву отсортированных значений
     for i in range(len(nums)):
         # Исходно считаем наименьшим первый элемент
@@ -43,7 +43,8 @@ print(random_list_of_nums)'''
 # Проверяем, что оно работает
 random_list_of_nums = [12, 8, 3, 20, 11]  
 selection_sort(random_list_of_nums)  
-print(random_list_of_nums)'''
+print(random_list_of_nums)
+
 '''def select_sort(A):
     for i in range(len(A) - 1):
         min_index = i

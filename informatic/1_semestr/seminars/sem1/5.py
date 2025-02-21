@@ -9,8 +9,7 @@ D = 0
 
 if base != 10:
     for i in N:
-        A.append(int(i))
-    
+        A.append(int(i))   
 
     n = len(A)-1
     for i in A:
