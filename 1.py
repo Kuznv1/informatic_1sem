@@ -1,178 +1,45 @@
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
-        self.height = 1
+from collections import deque
 
+def topological_sort_unique(n, edges):
+    # Строим граф и считаем степени вершин
+    graph = [[] for _ in range(n + 1)]
+    in_degree = [0] * (n + 1)
 
-class AVLTree:
-    def __init__(self):
-        self.root = None
+    for u, v in edges:
+        graph[u].append(v)
+        in_degree[v] += 1
 
-    def height(self, node):
-        if not node:
-            return 0
-        return node.height
+    # Инициализируем очередь для вершин с нулевой степенью
+    zero_in_degree = deque()
+    for i in range(1, n + 1):
+        if in_degree[i] == 0:
+            zero_in_degree.append(i)
 
-    def balance(self, node):
-        if not node:
-            return 0
-        return self.height(node.left) - self.height(node.right)
+    count = 0
+    unique = True
 
-    def insert(self, root, value):
-        if not root:
-            return Node(value)
-        elif value < root.value:
-            root.left = self.insert(root.left, value)
-        else:
-            root.right = self.insert(root.right, value)
+    while zero_in_degree:
+        if len(zero_in_degree) > 1:  # Если больше одной вершины с нулевой степенью
+            unique = False
+        
+        current = zero_in_degree.popleft()
+        count += 1
 
-        root.height = 1 + max(self.height(root.left), self.height(root.right))
-        balance = self.balance(root)
+        # Уменьшаем степень соседей
+        for neighbor in graph[current]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                zero_in_degree.append(neighbor)
 
-        # Left rotation
-        if balance > 1 and value < root.left.value:
-            return self.right_rotate(root)
+    # Если обработано не все вершины, значит есть цикл
+    if count < n:
+        return -1
+    
+    return "YES" if unique else "NO"
 
-        # Right rotation
-        if balance < -1 and value > root.right.value:
-            return self.left_rotate(root)
+# Чтение входных данных
+n, m = map(int, input().split())
+edges = [tuple(map(int, input().split())) for _ in range(m)]
 
-        # Left-Right rotation
-        if balance > 1 and value > root.left.value:
-            root.left = self.left_rotate(root.left)
-            return self.right_rotate(root)
-
-        # Right-Left rotation
-        if balance < -1 and value < root.right.value:
-            root.right = self.right_rotate(root.right)
-            return self.left_rotate(root)
-
-        return root
-
-    def delete(self, root, value):
-        if not root:
-            return root
-
-        if value < root.value:
-            root.left = self.delete(root.left, value)
-        elif value > root.value:
-            root.right = self.delete(root.right, value)
-        else:
-            if not root.left:
-                temp = root.right
-                root = None
-                return temp
-            elif not root.right:
-                temp = root.left
-                root = None
-                return temp
-
-            temp = self.min_value_node(root.right)
-            root.value = temp.value
-            root.right = self.delete(root.right, temp.value)
-
-        if not root:
-            return root
-
-        root.height = 1 + max(self.height(root.left), self.height(root.right))
-        balance = self.balance(root)
-
-        # Left rotation
-        if balance > 1 and self.balance(root.left) >= 0:
-            return self.right_rotate(root)
-
-        # Right rotation
-        if balance < -1 and self.balance(root.right) <= 0:
-            return self.left_rotate(root)
-
-        # Left-Right rotation
-        if balance > 1 and self.balance(root.left) < 0:
-            root.left = self.left_rotate(root.left)
-            return self.right_rotate(root)
-
-        # Right-Left rotation
-        if balance < -1 and self.balance(root.right) > 0:
-            root.right = self.right_rotate(root.right)
-            return self.left_rotate(root)
-
-        return root
-
-    def left_rotate(self, z):
-        y = z.right
-        T2 = y.left
-
-        y.left = z
-        z.right = T2
-
-        z.height = 1 + max(self.height(z.left), self.height(z.right))
-        y.height = 1 + max(self.height(y.left), self.height(y.right))
-
-        return y
-
-    def right_rotate(self, z):
-        y = z.left
-        T3 = y.right
-
-        y.right = z
-        z.left = T3
-
-        z.height = 1 + max(self.height(z.left), self.height(z.right))
-        y.height = 1 + max(self.height(y.left), self.height(y.right))
-
-        return y
-
-    def min_value_node(self, root):
-        current = root
-        while current.left:
-            current = current.left
-        return current
-
-    def search(self, root, value):
-        if not root or root.value == value:
-            return root
-        if root.value < value:
-            return self.search(root.right, value)
-        return self.search(root.left, value)
-
-    def insert_value(self, value):
-        self.root = self.insert(self.root, value)
-
-    def delete_value(self, value):
-        self.root = self.delete(self.root, value)
-
-    def search_value(self, value):
-        return self.search(self.root, value)
-
-
-# Example usage:
-  
-tree = AVLTree()
-tree.insert_value(10)
-tree.insert_value(20)
-tree.insert_value(30)
-tree.insert_value(40)
-tree.insert_value(50)
-
-print("Tree after insertion:")
-# In-order traversal to print the tree
-def inorder_traversal(root):
-    if root:
-        inorder_traversal(root.left)
-        print(root.value),
-        inorder_traversal(root.right)
-
-inorder_traversal(tree.root)
-print()
-
-tree.delete_value(20)
-print("Tree after deletion of 20:")
-inorder_traversal(tree.root)
-print()
-
-result = tree.search_value(30)
-if result != None:
-    print("Node found")
-else:
-    print("Node not found")
+result = topological_sort_unique(n, edges)
+print(result)

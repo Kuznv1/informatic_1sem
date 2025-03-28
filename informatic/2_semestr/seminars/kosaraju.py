@@ -41,6 +41,8 @@ def dfs_recoursive(graph):
             components.append(visited)
     return components
 
+# Ищет компоненты сильной связности
+
 def kosaraju(graph):
     # 1 топсортировка
     top_sort = topological_sort(graph)

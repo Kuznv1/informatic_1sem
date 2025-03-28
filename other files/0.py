@@ -1,23 +1,35 @@
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
 
-plt.figure(figsize=(8,5), dpi=100)
+# G = [[0, 1.5, float('inf'), float('inf'), 0.5, float('inf')],
+#      [float('inf'), 0, 1, 3, float('inf'), float('inf')],
+#      [float('inf'), float('inf'), 0, 1, float('inf'), float('inf')],
+#      [2, float('inf'), float('inf'), 0, float('inf'), float('inf')], 
+#      [float('inf'), 0.5, float('inf'), float('inf'), 0, float('inf')],
+#      [float('inf'), float('inf'), float('inf'), float('inf'), 1, 0]
+#      ]
+G = {0: {1: 1.5, 4: 0.5}, 1:{2:1, 3:3}, 2:{3:1}, 3:{0:2}, 4: {1: 0.5}, 5:{4:1}}
 
-pos = 0
- 
-# параметр отвечающий за разброс
-scale = 10
- 
-# размер массива случайных чисел (сколько их сгенерируем)
-size = 10000
- 
-# используем функцию из подраздела random библиотеки numpy и передадим наши параметры
-values = np.random.normal(pos, 10, size)
- 
-# строим гистограмму с 100 блоков
-plt.hist(values, 100, color='green', label='trying')
+def Dijkstra(G,s):
+    V = len(G.keys())
+    dist = [float('inf') for i in range(V)]
+    prev = [None for i in range(V)]
+    dist[s] = 0
+    prev[s] = 0
+    S = set()
+    n = 0
+    while len(S) < V and n != V:
+        v = dist.index(min(dist))
 
-plt.legend()
+        S.add(v)
+        #dist[v] = float('inf')
+        for u, w in G[v].items():
+            if u not in S and dist[u] > dist[v] + w:
+                prev[u] = dist[v] + w
+                dist[u] = dist[v] + w                
+                #print(dist, v, u, S, n, prev)
+        dist[v] = float('inf')
+        n +=1
 
-plt.show()
+        
+    return prev
+
+print(Dijkstra(G, 0))
